@@ -34,12 +34,22 @@ const useSaddlePointVisualization = (groupRef) => {
   const cpTypes = useRef({
     hyper: {
       names: ["m", "s0", "t0", "h"],
-      range: [-5, 5],
+      range: [
+        [-5, 5],
+        [-0.5, 1.5],
+        [-0.5, 1.5],
+        [-3, 3],
+      ],
       history: [3, 0.4, 0.5, 0],
     },
     bilerp: {
       names: ["a", "b", "c", "d"],
-      range: [0, 1],
+      range: [
+        [0, 1],
+        [0, 1],
+        [0, 1],
+        [0, 1],
+      ],
       history: [0.4, 1.0, 0.6, 0.013],
     },
   });
@@ -120,30 +130,17 @@ const useSaddlePointVisualization = (groupRef) => {
         .name("Bounding Box");
     }
 
-    const cpvFolder = surfaceFolder.addFolder("Surface Control Points");
+    const cpvFolder = gui.addFolder("Surface Control Points");
     const cpType = cpTypes.current[surfaceProps.visualizationMode];
     const cpLabel = cpType.names;
     const cpRange = cpType.range;
-    cpvFolder
-      .add(cpv, "a", cpRange[0], cpRange[1], 0.01)
-      .name(cpLabel[0])
-      .listen()
-      .onChange((v) => setCpv((prev) => ({ ...prev, a: v })));
-    cpvFolder
-      .add(cpv, "b", cpRange[0], cpRange[1], 0.01)
-      .name(cpLabel[1])
-      .listen()
-      .onChange((v) => setCpv((prev) => ({ ...prev, b: v })));
-    cpvFolder
-      .add(cpv, "c", cpRange[0], cpRange[1], 0.01)
-      .name(cpLabel[2])
-      .listen()
-      .onChange((v) => setCpv((prev) => ({ ...prev, c: v })));
-    cpvFolder
-      .add(cpv, "d", cpRange[0], cpRange[1], 0.01)
-      .name(cpLabel[3])
-      .listen()
-      .onChange((v) => setCpv((prev) => ({ ...prev, d: v })));
+    ["a", "b", "c", "d"].forEach((key, index) => {
+      cpvFolder
+        .add(cpv, key, cpRange[index][0], cpRange[index][1], 0.01)
+        .name(cpLabel[index])
+        .listen()
+        .onChange((v) => setCpv((prev) => ({ ...prev, [key]: v })));
+    });
     return () => {
       gui.destroy();
     };
