@@ -12,7 +12,7 @@ import GUI from "lil-gui";
 /* eslint-disable react/prop-types */
 const useSaddlePointVisualization = (groupRef) => {
   // Configure state
-  const [showcaseRotation, setShowcaseRotation] = useState({ value: true });
+  const [showcaseRotation, setShowcaseRotation] = useState({ value: false });
   const [cpv, setCpv] = useState({
     a: 0.4,
     b: 1.0,
