@@ -8,7 +8,6 @@
 import "./App.scss";
 import CanvasWrapper from "./components/CanvasWrapper";
 import Credits from "./components/Credits";
-import HyperbolicParaboloidScene from "./components/examples/HyperbolicParaboloid";
 import SaddlePointVisualization from "./components/SaddlePointVisualization/SaddlePointVisualization";
 
 function App() {
