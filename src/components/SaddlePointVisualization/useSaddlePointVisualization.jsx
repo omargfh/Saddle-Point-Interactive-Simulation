@@ -72,7 +72,7 @@ const useSaddlePointVisualization = (groupRef) => {
       .onChange((v) => setSurfaceProps({ ...surfaceProps, segments: v }))
       .name("Segments");
     surfaceFolder
-      .add(surfaceProps, "visualizationMode", ["Bilerp", "Hyperpoloidal"])
+      .add(surfaceProps, "visualizationMode", ["Bilerp", "Hyperboloidal"])
       .onChange((v) => {
         if (v === "hyper") {
           const history = cpTypes.current.hyper.history;
@@ -259,7 +259,7 @@ const useSaddlePointVisualization = (groupRef) => {
       {
         text:
           surfaceProps.visualizationMode === "hyper"
-            ? "Hyperpoloidal Surface"
+            ? "Hyperboloidal Surface"
             : "Bilerp Surface",
         props: {
           position: [0, graphSize / 2 + 0.5, 0],
