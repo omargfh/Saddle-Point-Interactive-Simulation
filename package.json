@@ -16,6 +16,7 @@
     "@tailwindcss/postcss": "^4.0.3",
     "@tailwindcss/vite": "^4.0.3",
     "@uidotdev/usehooks": "^2.4.1",
+    "@vercel/analytics": "^1.4.1",
     "lil-gui": "^0.20.0",
     "postcss": "^8.5.1",
     "processing": "^0.2.0",
